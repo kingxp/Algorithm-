@@ -1,1 +1,35 @@
-this 
+Problem : Two Sum
+
+Discription:
+	Given an array of integers, return indices of the two numbers such that they add up to a specific target.
+	You may assume that each input would have exactly one solution, and you may not use the same element twice.
+
+Example:
+	Given nums = [2, 7, 11, 15], target = 9,Because nums[0] + nums[1] = 2 + 7 = 9,
+	return [0, 1].
+	
+My thought:
+	This problem use hash table.
+
+My code:
+
+    vector<int> twoSum(vector<int>& nums, int target) {
+        unordered_map<int,int> mp;
+        vector<int> ans;
+         for(int i=0;i<nums.size();i++)
+         {
+             if(!mp.count(nums[i])) mp[target-nums[i]]=i;
+             else
+             {
+                 ans.push_back(mp[nums[i]]);
+                 ans.push_back(i);
+                 return ans;
+             }
+         }
+       // return ans;
+    }
+
+Result:
+	The runtime is 4ms.
+	My runtime beats 99.98% of cpp submissions.
+ 
