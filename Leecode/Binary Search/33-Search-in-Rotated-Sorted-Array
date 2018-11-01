@@ -1,1 +1,28 @@
-aaa
+int search(vector<int>& nums, int target) {
+        
+  
+        /*
+        nums[mid]<nums[right] 右半边有序的 
+            nums[mid]>target target 必然在左侧
+            nums[mid]<target target>nums[right] 左侧
+                             target<nums[right] 右侧  
+        nums[mid]>nums[right] 左半边有序的
+            nums[mid]>target target>nums[left] 左侧
+                             target<nus[right] 右侧
+            nums[mid]<target target必然在右侧
+        */
+        int left = 0;
+        int right = nums.size()-1;
+        while(left<=right)
+        {
+            int mid = left+(right-left)/2;
+            if(nums[mid]==target) return mid;
+            if(nums[left]==target) return left;
+            if(nums[right]==target) return right;
+            
+            if(((nums[mid]<nums[right])&&(nums[mid]>target))||((nums[mid]<nums[right])&&(nums[mid]<target)&&(target>nums[right]))||((nums[mid]>nums[right])&&(nums[mid]>target)&&(target>nums[left]))) right = mid-1;
+            else left = mid+1;
+            
+        }
+        return -1;
+    }
