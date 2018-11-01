@@ -15,6 +15,7 @@ Example 2:
         
 My thought:
         Binary Search 
+	最难的点是这样的，就是nums[mid]<nums[right] 意味着[mid,right]是有序的;nums[mid]>nums[right]意味着[left,mid]是有序的 
 	
 
 My Code:
